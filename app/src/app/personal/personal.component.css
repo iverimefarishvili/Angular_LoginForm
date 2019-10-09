@@ -1,0 +1,13 @@
+.personalinfo{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: 0 auto;
+    padding-top: 80px;
+}
+.personalinp {
+    margin-top: 20px;
+    height: 35px;
+    width: 200px;
+    margin: 0 auto;
+}
