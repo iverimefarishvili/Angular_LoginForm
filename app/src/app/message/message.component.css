@@ -1,0 +1,13 @@
+.message{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 0 auto;
+    padding-top: 80px;
+}
+.messageinp {
+    margin-top: 40px;
+    height: 35px;
+    width: 100%;
+    
+}

@@ -1,13 +1,13 @@
 .personalinfo{
     display: flex;
     flex-direction: column;
-    width: 400px;
+    width: 300px;
     margin: 0 auto;
     padding-top: 80px;
 }
 .personalinp {
-    margin-top: 20px;
+    margin-top: 40px;
     height: 35px;
-    width: 200px;
-    margin: 0 auto;
+    width: 100%;
+    
 }
