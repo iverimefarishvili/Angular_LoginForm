@@ -1,11 +1,11 @@
 <div class="main"> 
-  <div class="info" (click)="personalIsActive != personalIsActive;messageIsActive == false;contactIsActive == false;">
+  <div class="info" (click)="personalIsActive == !personalIsActive;messageIsActive == 'false';contactIsActive == 'false';click(personalIsActive)">
     <h3>Personal Information</h3>
   </div>
-  <div class="info" (click)="contactIsActive != contactIsActive;messageIsActive == false;personalIsActive == false;">
+  <div class="info" (click)="contactIsActive != contactIsActive;messageIsActive == false;personalIsActive == false;click()">
     <h3>Contact Information</h3>
   </div>
-  <div class="info" (click)="messageIsActive != messageIsActive;personalIsActive == false;contactIsActive == false;">
+  <div class="info" (click)="messageIsActive != messageIsActive;personalIsActive == false;contactIsActive == false;click()">
     <h3>Message</h3>
   </div>
 </div> 
@@ -14,10 +14,10 @@
   <app-personal></app-personal>
 </ng-container>
 
-<ng-container *ngIf="personalIsActive">
+<ng-container *ngIf="contactIsActive">
     <app-contact></app-contact>
 </ng-container>
 
-<ng-container *ngIf="personalIsActive">
+<ng-container *ngIf="messageIsActive">
     <app-message></app-message>
 </ng-container>

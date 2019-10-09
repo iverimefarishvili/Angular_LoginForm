@@ -9,4 +9,8 @@ export class AppComponent {
   personalIsActive = false;
   contactIsActive = false;
   messageIsActive = false;
+  
+  public click(element) {
+    
+  }
 }
