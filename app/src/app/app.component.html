@@ -1,14 +1,23 @@
 <div class="main"> 
-  <div class="info" (click)="personalIsActive != personalIsActive">
+  <div class="info" (click)="personalIsActive != personalIsActive;messageIsActive == false;contactIsActive == false;">
     <h3>Personal Information</h3>
   </div>
-  <div class="info">
+  <div class="info" (click)="contactIsActive != contactIsActive;messageIsActive == false;personalIsActive == false;">
     <h3>Contact Information</h3>
   </div>
-  <div class="info">
+  <div class="info" (click)="messageIsActive != messageIsActive;personalIsActive == false;contactIsActive == false;">
     <h3>Message</h3>
   </div>
 </div> 
 
+<ng-container *ngIf="personalIsActive">
+  <app-personal></app-personal>
+</ng-container>
 
-<app-message></app-message>
+<ng-container *ngIf="personalIsActive">
+    <app-contact></app-contact>
+</ng-container>
+
+<ng-container *ngIf="personalIsActive">
+    <app-message></app-message>
+</ng-container>
