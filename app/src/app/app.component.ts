@@ -11,6 +11,7 @@ export class AppComponent {
   messageIsActive = false;
   
   public click(element) {
-    
+    element == !this.personalIsActive;
+    console.log(!element)
   }
 }
