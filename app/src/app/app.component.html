@@ -11,7 +11,7 @@
 </div> 
 
 <ng-container *ngIf="personalIsActive">
-  <app-personal [data]></app-personal>
+  <app-personal (data)="onPush(data)"></app-personal>
 </ng-container>
 
 <ng-container *ngIf="contactIsActive">

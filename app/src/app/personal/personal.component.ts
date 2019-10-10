@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild, ElementRef, Output } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Output, Input } from '@angular/core';
 import { FormGroup, FormControl, FormArray, ReactiveFormsModule } from '@angular/forms';
-import { type } from 'os';
+import { EventEmitter } from 'events';
 
 @Component({
   selector: 'app-personal',
@@ -14,11 +14,13 @@ export class PersonalComponent implements OnInit {
 
   isSuitable = true;
   called = false;
+  
+  @Output() public data = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
-    
+    this.data.emit("sadasdsadas");
   }
 
   isGeorgian(event,element) {

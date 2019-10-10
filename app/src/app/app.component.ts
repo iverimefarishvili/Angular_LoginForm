@@ -1,7 +1,7 @@
 import { Component, Output, Input, OnInit } from '@angular/core';
 import { EventEmitter } from 'events';
 import { NgModel } from '@angular/forms';
-import { Data } from './model';
+
 
 
 @Component({
@@ -12,11 +12,13 @@ import { Data } from './model';
 
 
 export class AppComponent implements OnInit{
+
   personalIsActive = true;
   contactIsActive = false;
   messageIsActive = false;
+
   constructor() { }
-  @Input('data') data: any;
+
   ngOnInit() {
     
   }
@@ -26,8 +28,10 @@ export class AppComponent implements OnInit{
   click(element) {
     //this.personalIsActive = !this.personalIsActive;
     //console.log(this.personalIsActive)
-    console.log(this.data);
-    
+  }
+
+  onPush(param) {
+    console.log(param)
   }
 
   
