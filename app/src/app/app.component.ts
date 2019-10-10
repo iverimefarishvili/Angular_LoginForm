@@ -14,12 +14,12 @@ import { Data } from './model';
 export class AppComponent implements OnInit{
 
   constructor() { }
-
+  @Input('data') data: any;
   ngOnInit() {
-    console.log(this.data)
+    setTimeout(() => {
+      console.log(console.log(this.data));  
+    }, 5000);
   }
-  
-  @Input() data: Data;
 
   personalIsActive = true;
   contactIsActive = false;
@@ -28,6 +28,7 @@ export class AppComponent implements OnInit{
   click(element) {
     //this.personalIsActive = !this.personalIsActive;
     console.log(this.personalIsActive)
+    
   }
 
  
