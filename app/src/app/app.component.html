@@ -1,5 +1,5 @@
 <div class="main"> 
-  <div class="info" (click)="personalIsActive = true;messageIsActive = false;contactIsActive = false;click(personalIsActive)">
+  <div class="info" (click)="personalIsActive = true;messageIsActive = false;contactIsActive = false;click()">
     <h3>Personal Information</h3>
   </div>
   <div class="info" (click)="contactIsActive = true;messageIsActive = false;personalIsActive = false;click()">
@@ -11,7 +11,7 @@
 </div> 
 
 <ng-container *ngIf="personalIsActive">
-  <app-personal></app-personal>
+  <app-personal ></app-personal>
 </ng-container>
 
 <ng-container *ngIf="contactIsActive">

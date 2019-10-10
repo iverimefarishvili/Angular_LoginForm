@@ -1,14 +1,25 @@
-import { Component, Output } from '@angular/core';
+import { Component, Output, Input, OnInit } from '@angular/core';
 import { EventEmitter } from 'events';
+import { NgModel } from '@angular/forms';
+import { Data } from './model';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
 
-  @Output() pushinfo = new EventEmitter();
+
+export class AppComponent implements OnInit{
+
+  constructor() { }
+
+  ngOnInit() {
+    console.log(this.data)
+  }
+  
+  @Input() data: Data;
 
   personalIsActive = true;
   contactIsActive = false;
