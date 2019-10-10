@@ -1,6 +1,5 @@
-import { Component, OnInit, ViewChild, ElementRef, Output, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Output, Input, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, FormArray, ReactiveFormsModule } from '@angular/forms';
-import { EventEmitter } from 'events';
 
 @Component({
   selector: 'app-personal',
@@ -15,7 +14,7 @@ export class PersonalComponent implements OnInit {
   isSuitable = true;
   called = false;
   
-  @Output() public data = new EventEmitter();
+  @Output() data = new EventEmitter();
 
   constructor() { }
 
