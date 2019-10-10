@@ -48,4 +48,8 @@ export class PersonalComponent implements OnInit {
     }
   }
 
+  pushInformation() {
+    console.log("yesss")
+  }
+
 }
