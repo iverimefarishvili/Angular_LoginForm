@@ -11,7 +11,7 @@
 </div> 
 
 <ng-container *ngIf="personalIsActive">
-  <app-personal [data]="integers"></app-personal>
+  <app-personal [data]></app-personal>
 </ng-container>
 
 <ng-container *ngIf="contactIsActive">
@@ -26,5 +26,5 @@
 <div class="buttons">
   <button class="cancel">Cancel</button>
 
-  <button class="next">Next</button>
+  <button class="next" (click)="click()">Next</button>
 </div>
