@@ -6,12 +6,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  personalIsActive = false;
+
+  personalIsActive = true;
   contactIsActive = false;
   messageIsActive = false;
   
-  public click(element) {
-    element == !this.personalIsActive;
-    console.log(!element)
+  click(element) {
+    //this.personalIsActive = !this.personalIsActive;
+    console.log(this.personalIsActive)
   }
+
+ 
+
+
 }

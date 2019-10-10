@@ -1,9 +1,11 @@
-<div class="personalinfo">
+<form class="personalinfo">
 
-    <input class="personalinp" type="text" placeholder="  firstname...">
+    <input #name class="personalinp" type="text" placeholder="  firstname..." (keyup)="isGeorgian($event, name)">
+    <span style="color:red" *ngIf="name.isSuitable">Not valid!</span>
 
-    <input class="personalinp" type="text" placeholder="  lastname...">
+    <input #surname class="personalinp" type="text" placeholder="  lastname..." (keyup)="isGeorgian($event, surname)">
+    <span style="color:red" *ngIf="surname.isSuitable">Not valid!</span>
 
-    <input class="personalinp" type="text" placeholder="  idnumber...">
-    
-</div>
+    <input #idnumber class="personalinp" type="text" placeholder="  idnumber..." (keyup)="idNumberCheck($event, idnumber)" maxlength="11">
+    <span style="color:red" *ngIf="idnumber.isSuitable">Not valid!</span>
+</form>
