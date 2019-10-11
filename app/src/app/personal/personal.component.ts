@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, Output, Input, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, FormArray, ReactiveFormsModule } from '@angular/forms';
+import { AppService } from '../app.service';
+
 
 @Component({
   selector: 'app-personal',
@@ -13,15 +15,19 @@ export class PersonalComponent implements OnInit {
 
   isSuitable = true;
   called = false;
-  
-  @Output() data = new EventEmitter();
 
-  constructor() { }
+  @ViewChild('name', {static: false}) el1 :ElementRef;
+  
+  @Output() outputdata = new EventEmitter();
+
+  @Input() inputdata = new EventEmitter();
+
+  constructor(private appservice: AppService) { }
 
   ngOnInit() {
-    this.data.emit("sadasdsadas");
+    
   }
-
+  
   isGeorgian(event,element) {
     this.called = true;
     
@@ -47,10 +53,6 @@ export class PersonalComponent implements OnInit {
         event.target.value = '';
       }
     }
-  }
-
-  pushInformation() {
-    console.log("yesss")
   }
 
 }

@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { PersonalComponent } from './personal/personal.component';
 import { ContactComponent } from './contact/contact.component';
 import { MessageComponent } from './message/message.component';
+import { AppService } from './app.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { MessageComponent } from './message/message.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

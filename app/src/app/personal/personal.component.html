@@ -8,4 +8,5 @@
 
     <input #idnumber class="personalinp" type="text" placeholder="  idnumber..." (keyup)="idNumberCheck($event, idnumber)" maxlength="11">
     <span style="color:red" *ngIf="idnumber.isSuitable">Not valid!</span>
+    <button (click)="pushInformation()">click</button>
 </form>
