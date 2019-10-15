@@ -9,7 +9,6 @@ export class PersonalService {
 
 
   pushInformation() {
-    this.appservice.change.next("rame");
-    console.log(this.appservice.state)
+    
   }
 }

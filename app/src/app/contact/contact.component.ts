@@ -12,4 +12,9 @@ export class ContactComponent implements OnInit {
   ngOnInit() {
   }
 
+  form3 = new FormGroup({
+    text: new FormControl(''),
+    password: new FormControl('')
+  });
+
 }

@@ -17,16 +17,21 @@ export class PersonalComponent implements OnInit {
   called = false;
 
   @ViewChild('name', {static: false}) el1 :ElementRef;
-  
-  @Output() outputdata = new EventEmitter();
-
-  @Input() inputdata = new EventEmitter();
 
   constructor(private appservice: AppService) { }
 
   ngOnInit() {
     
   }
+
+  
+  form = new FormGroup({
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+    idNumber: new FormControl('')
+  });
+
+  
   
   isGeorgian(event,element) {
     this.called = true;

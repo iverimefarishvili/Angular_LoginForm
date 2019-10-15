@@ -1,7 +1,7 @@
-<form class="message">
+<form class="message" [formGroup]="form">
 
-    <textarea class="messageinp" type="text" placeholder="  message..."></textarea>
+    <textarea formControlName="message" class="messageinp" type="text" placeholder="  message..."></textarea>
         
-    <input class="messageinp" type="password" placeholder="  password...">
+    <input formControlName="password" class="messageinp" type="password" placeholder="  password...">
             
 </form>

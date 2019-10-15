@@ -1,12 +1,12 @@
-<form class="personalinfo">
+<form class="personalinfo" [formGroup]="form">
 
-    <input #name class="personalinp" type="text" placeholder="  firstname..." (keyup)="isGeorgian($event, name)">
+    <input #name formControlName="firstName" class="personalinp" type="text" placeholder="  firstname..." (keyup)="isGeorgian($event, name)">
     <span style="color:red" *ngIf="name.isSuitable">Not valid!</span>
 
-    <input #surname class="personalinp" type="text" placeholder="  lastname..." (keyup)="isGeorgian($event, surname)">
+    <input #surname formControlName="lastName" class="personalinp" type="text" placeholder="  lastname..." (keyup)="isGeorgian($event, surname)">
     <span style="color:red" *ngIf="surname.isSuitable">Not valid!</span>
 
-    <input #idnumber class="personalinp" type="text" placeholder="  idnumber..." (keyup)="idNumberCheck($event, idnumber)" maxlength="11">
+    <input #idnumber formControlName="idNumber" class="personalinp" type="text" placeholder="  idnumber..." (keyup)="idNumberCheck($event, idnumber)" maxlength="11">
     <span style="color:red" *ngIf="idnumber.isSuitable">Not valid!</span>
-    <button (click)="pushInformation()">click</button>
+    
 </form>

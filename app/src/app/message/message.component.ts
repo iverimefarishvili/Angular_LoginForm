@@ -12,4 +12,9 @@ export class MessageComponent implements OnInit {
   ngOnInit() {
   }
 
+  form2 = new FormGroup({
+    message: new FormControl(''),
+    password: new FormControl('')
+  });
+
 }
