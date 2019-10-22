@@ -136,38 +136,6 @@ export class AppService implements OnInit{
   }
 
   
-  k = 0;
-  Animation() {
-      //this.animation.nativeElement.setAttribute("[@slideInOut]");
-     setTimeout(()=>{
-
-      
-        
-        this.renderer.setStyle(
-          this.animation.nativeElement, 
-          'width', 
-          `${this.k}%`
-        );
-        if(this.k<100) {
-          this.k = this.k+0.05;
-          this.Animation();
-        } else {
-          this.renderer.setStyle(
-            this.animation.nativeElement, 
-            'width', 
-            `${0}%`
-          );
-          this.timeless = true;
-        
-        }
-      },20)
-      
-      
-    
-    
-  }
-
-  
   retype(event?, password?) {
     
     if(this.password.nativeElement.value != event.target.value) {
@@ -205,17 +173,5 @@ export class AppService implements OnInit{
       this.contactIsActive = true;
     }
   }
-
-  register() {
-    if((this.form.value.firstName.length>0 && this.form.value.lastName.length >0 && this.form.value.idNumber.length > 0 && this.form2.value.email.length>0 && this.form2.value.phonenumber.length > 0 && `${this.form3.value.text}`.length>0 && this.form3.value.password.length>0 )) {
-       
-      if(this.form.disabled && this.form2.disabled)  {
-        this.loginpageIsactive = !this.loginpageIsactive;
-        
-      }
-    }
-  }
-
-
 
 }
