@@ -1,21 +1,13 @@
-import { Injectable, OnInit } from '@angular/core';
-import { Data } from './model';
-import { Subject } from 'rxjs';
-import { PersonalService } from './personal/personal.service';
-import { ContactService } from './contact/contact.service';
-import { MessageService } from './message/message.service';
+import { Component, OnInit, Input, ViewChild, ElementRef, Renderer2, Output } from '@angular/core';
+import { FormControl, FormGroup } from 'app/node_modules/@angular/forms';
+import { EventEmitter } from '@angular/core';
 
-
-@Injectable({
-  providedIn: 'root'
+@Component({
+  selector: 'app-child',
+  templateUrl: './child.component.html',
+  styleUrls: ['./child.component.css']
 })
-export class AppService implements OnInit{
-
-  constructor(private personalservice: PersonalService, private contactservice: ContactService, private messageservice: MessageService) { }
-
-  ngOnInit() {
-   
-  }
+export class ChildComponent implements OnInit {
 
   state = {
     personal: {
@@ -32,6 +24,30 @@ export class AppService implements OnInit{
       password: ''
     }
   };
+  
+
+  constructor(public renderer: Renderer2) { }
+
+  ngOnInit() {
+   
+  }
+
+  form = new FormGroup({
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+    idNumber: new FormControl('')
+  });
+
+  form2 = new FormGroup({
+    email: new FormControl(''),
+    phonenumber: new FormControl('')
+  });
+
+  form3 = new FormGroup({
+    text: new FormControl(''),
+    password: new FormControl('')
+  });
+
 
   isSuitable = true;
   called = false;
@@ -43,6 +59,40 @@ export class AppService implements OnInit{
   contactIsActive = false;
   messageIsActive = false;
 
+  @ViewChild('name', {static: false}) name: ElementRef;
+  @ViewChild('surname', {static: false}) surname: ElementRef;
+  @ViewChild('idnumber', {static: false}) idnumber: ElementRef;
+  @ViewChild('email', {static: false}) email: ElementRef;
+  @ViewChild('phonenumber', {static: false}) phonenumber: ElementRef;
+
+
+  @ViewChild('animation', {static: false}) animation: ElementRef;
+
+  @ViewChild('textarea', {static: false}) textarea: ElementRef;
+  @ViewChild('password', {static: false}) password: ElementRef;
+
+  @ViewChild("div1", {static: false}) div1: ElementRef;
+
+
+  pushItem() {
+    console.log("ifushebaaaa ? ")
+    this.state.personal = {
+      firstname: this.form.value.firstName,
+      lastname: this.form.value.lastName,
+      idnumber: this.form.value.idNumber
+    }
+    
+    this.state.contact = {
+      email: this.form2.value.email,
+      phonenumber: this.form2.value.phonenumber
+    }
+    this.state.message = {
+      text: this.form3.value.text,
+      password: this.form3.value.password
+    }
+  }
+  
+  
 
   isGeorgian(event,element) {
     
@@ -58,6 +108,7 @@ export class AppService implements OnInit{
         element.isSuitable = false;
       }
     }
+    console.log(this.isSuitable)
   }
 
   idNumberCheck(event, element) {
@@ -85,6 +136,7 @@ export class AppService implements OnInit{
   re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   emailCheck(element, event) {
+    console.log(this.form2.value.email)
     if(this.re.test(event.target.value) ){
       element.isSuitable = false;
     } else {
@@ -178,7 +230,7 @@ export class AppService implements OnInit{
     }
   }
 
-
+  
   blurFunction(element) {
     element.onBlur = true;
   }
@@ -186,8 +238,6 @@ export class AppService implements OnInit{
   focusFuncton(element) {
     element.onBlur = false;
   }
-
-
 
   onclick() {
     this.pushItem();
@@ -241,11 +291,4 @@ export class AppService implements OnInit{
       }
     }
   }
-
-  pushItem() {
-    this.personalservice.pushItem();
-    this.messageservice.pushItem();
-    this.contactservice.pushItem();
-  }
-
 }

@@ -1,27 +1,36 @@
-import { Component, Output, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, ViewChild, Renderer2, Directive } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { trigger, transition, animate, style, state } from '@angular/animations';
 import { EventEmitter } from 'events';
-import { NgModel } from '@angular/forms';
-import { Data } from './model';
-import { Subject } from 'rxjs';
+import { PersonalComponent } from './personal/personal.component';
+import { ContactComponent } from './contact/contact.component';
+import { MessageComponent } from './message/message.component';
 import { AppService } from './app.service';
-import { PersonalService } from './personal/personal.service';
-
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  animations: [
+
+    trigger('slideInOut', [
+      transition(':enter', [
+        style({ transform: 'translateX(0%)', opacity: 0.3}),
+        animate('60000ms ease-in', style({ transform: 'translateX(0%)', 'opacity': 0.4, 'width': "100%"}))
+      ])
+    ])
+  ]
 })
-
-
-export class AppComponent implements OnInit{
-   
-  personalIsActive = true;
-  contactIsActive = false;
-  messageIsActive = false;
-
-  constructor(private appservice: AppService, private personalservice: PersonalService) { }
+export class AppComponent {
+  
+  @ViewChild('personal', {static: false}) personal: PersonalComponent;
+  @ViewChild('contact', {static: false}) contact: ContactComponent;
+  @ViewChild('message', {static: false}) message: MessageComponent;
+  
+  
+  constructor(public renderer: Renderer2,private appservice: AppService) { }
 
   ngOnInit() {
     
@@ -29,49 +38,37 @@ export class AppComponent implements OnInit{
 
 
   
+  
+ 
+
   next() {
-    this.pushItem();
-    console.log(this.personalIsActive, this.contactIsActive, this.messageIsActive)
-    if(this.personalIsActive) {
-      if(this.form.value.firstName.length>0 && this.form.value.lastName.length >0 && this.form.value.idNumber > 0 ) {
-        this.contactIsActive = true;
-        this.personalIsActive = false;
-        this.form.disable()
-        //this.div1.nativeElement.style.pointerEvents = 'none';
-        return 0;
-      }
-      
-    }
-    if(this.contactIsActive) {
-      if(this.form2.value.email.length>0 && this.form2.value.phonenumber.length > 0 ) {
-        this.contactIsActive = false;
-        this.messageIsActive = true;
-        this.form2.disable()
-        return 0;
-      }
-    }
+    this.appservice.onclick();
+  }
+
+  register() {
+      this.appservice.register(); 
   }
 
   back() {
-    if(this.contactIsActive) {
-      this.personalIsActive = true;
-      this.contactIsActive = false;
-      return 0;
-    }
-    if(this.messageIsActive) {
-      this.messageIsActive = false;
-      this.contactIsActive = true;
-    }
+    this.appservice.back();
   }
 
   cancel() {
     window.location.reload();
   }
-  
 
-
-
- 
-
-
+  messageclick() {
+    if(this.personal.form.disabled && this.contact.form2.disabled) {
+      this.appservice.personalIsActive = false;
+      this.appservice.messageIsActive = true;
+      this.appservice.contactIsActive = false;
+    }
+  }
+  contactclick() {
+    if(this.personal.form.disabled) {
+      this.appservice.contactIsActive = true;
+      this.appservice.messageIsActive = false;
+      this.appservice.personalIsActive = false;
+    }
+  }
 }

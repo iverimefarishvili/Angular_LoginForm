@@ -32,4 +32,66 @@
     background-color: red;
     color: white;
 }
+.phone-number {
+    position: relative;
+}
+.phone-number span {
+    position: absolute;
+    top: 52px;
+}
+.phone-number input{
+    padding-left: 35px;
+}
 
+.personalinfo{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 0 auto;
+    padding-top: 80px;
+}
+.personalinp {
+    margin-top: 40px;
+    height: 35px;
+    width: 100%;
+    }
+    .message{
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        margin: 0 auto;
+        padding-top: 80px;
+    }
+    .messageinp {
+        margin-top: 40px;
+        height: 35px;
+        width: 100%;
+        
+    }
+    .contact{
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        margin: 0 auto;
+        padding-top: 80px;
+    }
+    .contactinp {
+        margin-top: 40px;
+        height: 35px;
+        width: 100%;
+        
+    }
+    span{
+        position: absolute;
+
+    }
+    .relative {
+        position: relative;
+    }
+    
+    .background {
+        background-color: brown;;
+    }
+    .done {
+        background-color: green;
+    }

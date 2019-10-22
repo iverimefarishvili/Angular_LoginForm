@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-contact',
@@ -7,14 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild('email', {static: false}) email: ElementRef;
+  @ViewChild('phonenumber', {static: false}) phonenumber: ElementRef;
+
+
+  constructor(private appservice: AppService) { }
 
   ngOnInit() {
   }
 
-  form3 = new FormGroup({
-    text: new FormControl(''),
-    password: new FormControl('')
+  form2 = new FormGroup({
+    email: new FormControl(''),
+    phonenumber: new FormControl('')
   });
 
+  pushItem() {
+    this.appservice.state.contact = {
+      email: this.form2.value.email,
+      phonenumber: this.form2.value.phonenumber
+    }
+  }
 }

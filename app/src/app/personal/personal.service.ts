@@ -1,14 +1,21 @@
 import { Injectable } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { AppService } from '../app.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PersonalService {
 
-  constructor() { }
+  constructor(private appservice: AppService) { }
 
+  form: FormGroup;
 
-  pushInformation() {
-    
+  pushItem() {
+    this.appservice.state.personal = {
+      firstname: this.form.value.firstName,
+      lastname: this.form.value.lastName,
+      idnumber: this.form.value.idNumber
+    }
   }
 }

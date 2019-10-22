@@ -1,7 +1,16 @@
-<form class="contact">
 
-    <input class="contactinp" type="text" placeholder="  email...">
-    
-    <input class="contactinp" type="text" placeholder="  phonenumber...">
+    <form class="contact" [formGroup]="form2">
+        <div class="relative">
+      <input (blur)="blurFunction(email)" (focus)="focusFuncton(email)" formControlName="email" class="contactinp" type="text" #email placeholder=" email..." [(ngModel)]="state.contact.email" (keyup)="emailCheck(email, $event)">
+      <span style="color:red" *ngIf="email.isSuitable && email.onBlur">{{ email.error }}</span>
+        </div>
+      <div class="relative">
+      <div class="phone-number">
+        <span class="pre">+995</span>
+        <input (blur)="blurFunction(phonenumber)" type="number" (focus)="focusFuncton(phonenumber)" formControlName="phonenumber" #phonenumber class="contactinp" placeholder="  phonenumber..." [(ngModel)]="state.contact.phonenumber" 
+              (keyup)="phoneCheck($event, phonenumber)" onKeyPress="if(this.value.length==9) return false;">
         
-</form>
+      </div>
+      <span style="color:red" *ngIf="phonenumber.isSuitable && phonenumber.onBlur">{{ phonenumber.error }}</span>
+    </div>
+  </form>

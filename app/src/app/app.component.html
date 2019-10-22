@@ -1,30 +1,40 @@
+<ng-container *ngIf="!loginpageIsactive">
 <div class="main"> 
-  <div class="info" (click)="personalIsActive = true;messageIsActive = false;contactIsActive = false;click()">
+  <div class="info" (click)="appservice.personalIsActive = true;appservice.messageIsActive = false;appservice.contactIsActive = false;" [ngClass]="child.personalIsActive ? 'background' : none" [ngClass]="child.form.disabled ? 'done' : none" >
     <h3>Personal Information</h3>
   </div>
-  <div class="info" (click)="contactIsActive = true;messageIsActive = false;personalIsActive = false;click()">
+  <div class="info"  (click)="contactclick()" [ngClass]="appservice.contactIsActive ? 'background' : none" [ngClass]="child.form2.disabled ? 'done' : none">
     <h3>Contact Information</h3>
   </div>
-  <div class="info" (click)="messageIsActive = true;personalIsActive = false;contactIsActive = false;click()">
+  <div class="info" (click)="messageclick()" [ngClass]="appservice..messageIsActive ? 'background' : none" [ngClass]="child.form3.disabled ? 'done' : none">
     <h3>Message</h3>
   </div>
 </div> 
 
-<ng-container *ngIf="personalIsActive">
-  <app-personal (data)="onPush($event)"></app-personal>
+
+<ng-container *ngIf="appservice.personalIsActive" >
+  <app-personal></app-personal>
 </ng-container>
 
-<ng-container *ngIf="contactIsActive">
-    <app-contact></app-contact>
+<ng-container *ngIf="appservice.contactIsActive">
+  <app-contact></app-contact>
 </ng-container>
 
-<ng-container *ngIf="messageIsActive">
-    <app-message></app-message>
+<ng-container *ngIf="appservice.messageIsActive">
+  <app-message></app-message>
 </ng-container>
+
 
 
 <div class="buttons">
-  <button class="cancel">Cancel</button>
+  <button class="cancel" (click)="cancel()">Cancel</button>
+  <button *ngIf="!appservice.personalIsActive" class="next" (click)="back()">Back</button>
 
-  <button class="next" (click)="next()">Next</button>
+  <button *ngIf="!appservice.messageIsActive" class="next" (click)="next()">Next</button>
+  <button *ngIf="appservice.messageIsActive" class="next" (click)="register()">Sign Up</button>
 </div>
+</ng-container>
+
+<ng-container *ngIf="appservice.loginpageIsactive">
+  <app-loginpage [state]="state"></app-loginpage>
+</ng-container>

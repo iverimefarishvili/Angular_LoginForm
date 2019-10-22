@@ -1,12 +1,14 @@
-<form class="personalinfo" [formGroup]="form">
-
-    <input #name formControlName="firstName" class="personalinp" type="text" placeholder="  firstname..." (keyup)="isGeorgian($event, name)">
-    <span style="color:red" *ngIf="name.isSuitable">Not valid!</span>
-
-    <input #surname formControlName="lastName" class="personalinp" type="text" placeholder="  lastname..." (keyup)="isGeorgian($event, surname)">
-    <span style="color:red" *ngIf="surname.isSuitable">Not valid!</span>
-
-    <input #idnumber formControlName="idNumber" class="personalinp" type="text" placeholder="  idnumber..." (keyup)="idNumberCheck($event, idnumber)" maxlength="11">
-    <span style="color:red" *ngIf="idnumber.isSuitable">Not valid!</span>
-    
+<form class="personalinfo" [formGroup]="form" #div1>
+      <div class="relative">
+      <input (blur)="blurFunction(name)" (focus)="focusFuncton(name)" formControlName="firstName" #name class="personalinp" type="text" placeholder="  firstname..." (keyup)="isGeorgian($event, name)" [(ngModel)]="state.personal.firstname">
+      <span style="color:red;" *ngIf="name.isSuitable && name.onBlur">{{ name.error }}</span>
+      </div>
+      <div class="relative">
+      <input (blur)="blurFunction(surname)" (focus)="focusFuncton(surname)" formControlName="lastName" #surname class="personalinp" type="text" placeholder="  lastname..." (keyup)="isGeorgian($event, surname)" [(ngModel)]="state.personal.lastname">
+      <span style="color:red" *ngIf="surname.isSuitable && surname.onBlur">{{ surname.error }}</span>
+      </div>
+      <div class="relative">
+      <input (blur)="blurFunction(idnumber)" type="number" (focus)="focusFuncton(idnumber)" formControlName="idNumber" #idnumber class="personalinp" placeholder="  idnumber..." (keyup)="idNumberCheck($event, idnumber)" onKeyPress="if(this.value.length==11) return false;" [(ngModel)]="state.personal.idnumber">
+      <span style="color:red" *ngIf="idnumber.isSuitable && idnumber.onBlur">{{ idnumber.error }}</span>
+      </div>
 </form>
