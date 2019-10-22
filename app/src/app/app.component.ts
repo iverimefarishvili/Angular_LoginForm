@@ -42,7 +42,14 @@ export class AppComponent {
  
 
   next() {
-    this.appservice.onclick();
+    if(this.appservice.personalIsActive) {
+      this.personal.pushItem();
+      this.personal.next();
+    }
+    if(this.appservice.contactIsActive) {
+      this.contact.pushItem();
+      this.contact.next();
+    }
   }
 
   register() {

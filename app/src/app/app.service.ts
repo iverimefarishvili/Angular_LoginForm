@@ -190,33 +190,7 @@ export class AppService implements OnInit{
 
 
   onclick() {
-    this.pushItem();
-
-    
-    if(this.personalIsActive) {
-      if(this.form.value.firstName.length>0 && this.form.value.lastName.length >0 && `${this.form.value.idNumber}`.length > 0 ) {
-        if(!this.name.nativeElement.isSuitable && !this.surname.nativeElement.isSuitable && !this.idnumber.nativeElement.isSuitable) {
-          this.contactIsActive = true;
-          this.personalIsActive = false;
-          this.form.disable()
-          this.div1.nativeElement.style.pointerEvents = 'none';
-          return;
-        }
-      }
-    }
-    if(this.contactIsActive) {
-    if(this.form2.value.email.length>0 && `${this.form2.value.phonenumber}`.length > 0 && this.form.disabled) {
-        if(!this.email.nativeElement.isSuitable && !this.phonenumber.nativeElement.isSuitable) {
-          this.form2.disable()
-          this.contactIsActive = false;
-          this.messageIsActive = true;
-          this.Animation();
-        
-          
-          return 0;
-      }
-    }
-  }
+  
 
   }
 
@@ -242,10 +216,6 @@ export class AppService implements OnInit{
     }
   }
 
-  pushItem() {
-    this.personalservice.pushItem();
-    this.messageservice.pushItem();
-    this.contactservice.pushItem();
-  }
+
 
 }

@@ -21,10 +21,19 @@ export class MessageComponent implements OnInit {
   @ViewChild('password', {static: false}) password: ElementRef;
 
 
-  form3 = new FormGroup({
+  form = new FormGroup({
     text: new FormControl(''),
     password: new FormControl('')
   });
 
-  
+  pushItem() {
+    this.appservice.state.message = {
+      text: this.form.value.text,
+      password: this.form.value.password
+    }
+  }
+
+  next() {
+    
+  }
 }

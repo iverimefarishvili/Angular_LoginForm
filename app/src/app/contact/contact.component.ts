@@ -18,15 +18,31 @@ export class ContactComponent implements OnInit {
   ngOnInit() {
   }
 
-  form2 = new FormGroup({
+  form = new FormGroup({
     email: new FormControl(''),
     phonenumber: new FormControl('')
   });
 
   pushItem() {
     this.appservice.state.contact = {
-      email: this.form2.value.email,
-      phonenumber: this.form2.value.phonenumber
+      email: this.form.value.email,
+      phonenumber: this.form.value.phonenumber
     }
   }
+
+  next() {
+    if(this.form.value.email.length>0 && `${this.form.value.phonenumber}`.length > 0) {
+      if(!this.email.nativeElement.isSuitable && !this.phonenumber.nativeElement.isSuitable) {
+        this.form.disable()
+        this.appservice.contactIsActive = false;
+        this.appservice.messageIsActive = true;
+        //this.Animation();
+      
+        
+        return 0;
+    }
+  }
+  }
+
+  
 }
