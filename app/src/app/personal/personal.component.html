@@ -11,5 +11,4 @@
       <input (blur)="appservice.blurFunction(idnumber)" type="number" (focus)="appservice.focusFuncton(idnumber)" formControlName="idNumber" #idnumber class="personalinp" placeholder="  idnumber..." (keyup)="appservice.idNumberCheck($event, idnumber)" onKeyPress="if(this.value.length==11) return false;" [(ngModel)]="appservice.state.personal.idnumber">
       <span style="color:red" *ngIf="idnumber.isSuitable && idnumber.onBlur">{{ idnumber.error }}</span>
       </div>
-      <input type="text" class="anim">
 </form>

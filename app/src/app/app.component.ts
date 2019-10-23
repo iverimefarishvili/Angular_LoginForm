@@ -61,6 +61,7 @@ export class AppComponent {
       if(this.contact.form.value.email.length>0 && `${this.contact.form.value.phonenumber}`.length > 0) {
         if(!this.contact.email.nativeElement.isSuitable && !this.contact.phonenumber.nativeElement.isSuitable) {
           this.appservice.animation = true;
+          this.refreshData();
           this.appservice.contactDisable = true;
           this.contact.pushItem();
           this.appservice.contactIsActive = false;
@@ -72,6 +73,11 @@ export class AppComponent {
         }
       }
     }
+  }
+  x = 30;
+  digit = 0;
+  refreshData() {
+    this.appservice.refreshData();
   }
 
   register() {

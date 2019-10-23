@@ -109,7 +109,7 @@
 
     .anim {
         background: aqua;
-        animation: sample 60s 1s;
+        animation: sample 30s 1s;
         animation-fill-mode: none;
     }
 

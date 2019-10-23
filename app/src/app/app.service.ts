@@ -164,6 +164,19 @@ export class AppService implements OnInit{
   
 
   }
+  x = 30;
+  digit = 0;
+  refreshData() {
+    setTimeout(()=>{
+      this.digit++;
+      console.log(this.digit)
+      if(this.digit<30) {
+        this.refreshData();
+      } else {
+        this.animation = false;
+      }
+    },1000)
+  }
 
  
 }
