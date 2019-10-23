@@ -1,14 +1,14 @@
-<form class="personalinfo" [formGroup]="form" #div1>
+<form class="personalinfo" [formGroup]="form" #div1 [ngClass]="appservice.personalDisable ? 'disable' : none">
       <div class="relative">
-      <input (blur)="blurFunction(name)" (focus)="focusFuncton(name)" formControlName="firstName" #name class="personalinp" type="text" placeholder="  firstname..." (keyup)="isGeorgian($event, name)" [(ngModel)]="state.personal.firstname">
+      <input (blur)="appservice.blurFunction(name)" (focus)="appservice.focusFuncton(name)" formControlName="firstName" #name class="personalinp" type="text" placeholder="  firstname..." (keyup)="appservice.isGeorgian($event, name)" [(ngModel)]="appservice.state.personal.firstname">
       <span style="color:red;" *ngIf="name.isSuitable && name.onBlur">{{ name.error }}</span>
       </div>
       <div class="relative">
-      <input (blur)="blurFunction(surname)" (focus)="focusFuncton(surname)" formControlName="lastName" #surname class="personalinp" type="text" placeholder="  lastname..." (keyup)="isGeorgian($event, surname)" [(ngModel)]="state.personal.lastname">
+      <input (blur)="appservice.blurFunction(surname)" (focus)="appservice.focusFuncton(surname)" formControlName="lastName" #surname class="personalinp" type="text" placeholder="  lastname..." (keyup)="appservice.isGeorgian($event, surname)" [(ngModel)]="appservice.state.personal.lastname">
       <span style="color:red" *ngIf="surname.isSuitable && surname.onBlur">{{ surname.error }}</span>
       </div>
       <div class="relative">
-      <input (blur)="blurFunction(idnumber)" type="number" (focus)="focusFuncton(idnumber)" formControlName="idNumber" #idnumber class="personalinp" placeholder="  idnumber..." (keyup)="idNumberCheck($event, idnumber)" onKeyPress="if(this.value.length==11) return false;" [(ngModel)]="state.personal.idnumber">
+      <input (blur)="appservice.blurFunction(idnumber)" type="number" (focus)="appservice.focusFuncton(idnumber)" formControlName="idNumber" #idnumber class="personalinp" placeholder="  idnumber..." (keyup)="appservice.idNumberCheck($event, idnumber)" onKeyPress="if(this.value.length==11) return false;" [(ngModel)]="appservice.state.personal.idnumber">
       <span style="color:red" *ngIf="idnumber.isSuitable && idnumber.onBlur">{{ idnumber.error }}</span>
       </div>
 </form>

@@ -1,14 +1,14 @@
 
-    <form class="contact" [formGroup]="form2">
+    <form class="contact" [formGroup]="form" [ngClass]="appservice.contactDisable ? 'disable' : none">
         <div class="relative">
-      <input (blur)="blurFunction(email)" (focus)="focusFuncton(email)" formControlName="email" class="contactinp" type="text" #email placeholder=" email..." [(ngModel)]="state.contact.email" (keyup)="emailCheck(email, $event)">
+      <input (blur)="appservice.blurFunction(email)" (focus)="appservice.focusFuncton(email)" formControlName="email" class="contactinp" type="text" #email placeholder=" email..." [(ngModel)]="appservice.state.contact.email" (keyup)="appservice.emailCheck(email, $event)">
       <span style="color:red" *ngIf="email.isSuitable && email.onBlur">{{ email.error }}</span>
         </div>
       <div class="relative">
       <div class="phone-number">
         <span class="pre">+995</span>
-        <input (blur)="blurFunction(phonenumber)" type="number" (focus)="focusFuncton(phonenumber)" formControlName="phonenumber" #phonenumber class="contactinp" placeholder="  phonenumber..." [(ngModel)]="state.contact.phonenumber" 
-              (keyup)="phoneCheck($event, phonenumber)" onKeyPress="if(this.value.length==9) return false;">
+        <input (blur)="appservice.blurFunction(phonenumber)" type="number" (focus)="appservice.focusFuncton(phonenumber)" formControlName="phonenumber" #phonenumber class="contactinp" placeholder="  phonenumber..." [(ngModel)]="appservice.state.contact.phonenumber" 
+              (keyup)="appservice.phoneCheck($event, phonenumber)" onKeyPress="if(this.value.length==9) return false;">
         
       </div>
       <span style="color:red" *ngIf="phonenumber.isSuitable && phonenumber.onBlur">{{ phonenumber.error }}</span>

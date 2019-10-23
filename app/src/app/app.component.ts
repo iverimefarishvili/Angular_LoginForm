@@ -9,6 +9,7 @@ import { MessageComponent } from './message/message.component';
 import { AppService } from './app.service';
 
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -25,9 +26,9 @@ import { AppService } from './app.service';
 })
 export class AppComponent {
   
-  @ViewChild('personal', {static: false}) personal: PersonalComponent;
-  @ViewChild('contact', {static: false}) contact: ContactComponent;
-  @ViewChild('message', {static: false}) message: MessageComponent;
+  @ViewChild(PersonalComponent, {static: false}) personal: PersonalComponent;
+  @ViewChild(ContactComponent, {static: false}) contact: ContactComponent;
+  @ViewChild(MessageComponent, {static: false}) message: MessageComponent;
   
   
   constructor(public renderer: Renderer2,private appservice: AppService) { }
@@ -43,12 +44,32 @@ export class AppComponent {
 
   next() {
     if(this.appservice.personalIsActive) {
-      this.personal.pushItem();
-      this.personal.next();
+      
+      if(this.personal.form.value.firstName.length>0 && this.personal.form.value.lastName.length >0 && `${this.personal.form.value.idNumber}`.length > 0 ) {
+        if(!this.personal.name.nativeElement.isSuitable && !this.personal.surname.nativeElement.isSuitable && !this.personal.idnumber.nativeElement.isSuitable) {
+          this.appservice.personalDisable = true;
+          
+          this.personal.pushItem();
+          this.appservice.contactIsActive = true;
+          this.appservice.personalIsActive = false;
+          return;
+      }
+    }
     }
     if(this.appservice.contactIsActive) {
-      this.contact.pushItem();
-      this.contact.next();
+      
+      if(this.contact.form.value.email.length>0 && `${this.contact.form.value.phonenumber}`.length > 0) {
+        if(!this.contact.email.nativeElement.isSuitable && !this.contact.phonenumber.nativeElement.isSuitable) {
+          this.appservice.contactDisable = true;
+          this.contact.pushItem();
+          this.appservice.contactIsActive = false;
+          this.appservice.messageIsActive = true;
+          //this.Animation();
+        
+          
+          return 0;
+        }
+      }
     }
   }
 
@@ -65,7 +86,17 @@ export class AppComponent {
   }
 
   back() {
-    this.appservice.back();
+    if(this.appservice.contactIsActive) {
+      
+      this.appservice.personalIsActive = true;
+      this.appservice.contactIsActive = false;
+      
+      return 0;
+    }
+    if(this.appservice.messageIsActive) {
+      this.appservice.messageIsActive = false;
+      this.appservice.contactIsActive = true;
+    }
   }
 
   cancel() {
@@ -73,14 +104,14 @@ export class AppComponent {
   }
 
   messageclick() {
-    if(this.personal.form.disabled && this.contact.form.disabled) {
+    if(this.appservice.contactDisable && this.appservice.personalDisable) {
       this.appservice.personalIsActive = false;
       this.appservice.messageIsActive = true;
       this.appservice.contactIsActive = false;
     }
   }
   contactclick() {
-    if(this.personal.form.disabled) {
+    if(this.appservice.personalDisable) {
       this.appservice.contactIsActive = true;
       this.appservice.messageIsActive = false;
       this.appservice.personalIsActive = false;

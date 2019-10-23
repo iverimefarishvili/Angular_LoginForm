@@ -1,12 +1,12 @@
-<ng-container *ngIf="!loginpageIsactive">
+<ng-container *ngIf="!appservice.loginpageIsactive">
 <div class="main"> 
-  <div class="info" (click)="appservice.personalIsActive = true;appservice.messageIsActive = false;appservice.contactIsActive = false;" [ngClass]="child.personalIsActive ? 'background' : none" [ngClass]="child.form.disabled ? 'done' : none" >
+  <div class="info" (click)="appservice.personalIsActive = true;appservice.messageIsActive = false;appservice.contactIsActive = false;" [ngClass]="appservice.personalIsActive ? 'background' : none"  >
     <h3>Personal Information</h3>
   </div>
-  <div class="info"  (click)="contactclick()" [ngClass]="appservice.contactIsActive ? 'background' : none" [ngClass]="child.form2.disabled ? 'done' : none">
+  <div class="info"  (click)="contactclick()" [ngClass]="appservice.contactIsActive ? 'background' : none" >
     <h3>Contact Information</h3>
   </div>
-  <div class="info" (click)="messageclick()" [ngClass]="appservice..messageIsActive ? 'background' : none" [ngClass]="child.form3.disabled ? 'done' : none">
+  <div class="info" (click)="messageclick()" [ngClass]="appservice.messageIsActive ? 'background' : none" >
     <h3>Message</h3>
   </div>
 </div> 

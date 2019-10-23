@@ -30,19 +30,8 @@ export class ContactComponent implements OnInit {
     }
   }
 
-  next() {
-    if(this.form.value.email.length>0 && `${this.form.value.phonenumber}`.length > 0) {
-      if(!this.email.nativeElement.isSuitable && !this.phonenumber.nativeElement.isSuitable) {
-        this.form.disable()
-        this.appservice.contactIsActive = false;
-        this.appservice.messageIsActive = true;
-        //this.Animation();
-      
-        
-        return 0;
-    }
-  }
-  }
+  
+  
 
   
 }

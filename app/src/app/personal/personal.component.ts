@@ -16,6 +16,7 @@ export class PersonalComponent implements OnInit {
   @ViewChild('name', {static: false}) name: ElementRef;
   @ViewChild('surname', {static: false}) surname: ElementRef;
   @ViewChild('idnumber', {static: false}) idnumber: ElementRef;
+  @ViewChild('div1', {static: false}) personForm: FormGroup;
 
   constructor(private appservice: AppService) { }
 
@@ -28,5 +29,16 @@ export class PersonalComponent implements OnInit {
     lastName: new FormControl(''),
     idNumber: new FormControl('')
   });
+
+  pushItem() {
+    this.appservice.state.personal = {
+      firstname: this.form.value.firstName,
+      lastname: this.form.value.lastName,
+      idnumber: this.form.value.idNumber
+    }
+  }
+  
+  
+  
  
 }

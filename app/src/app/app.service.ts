@@ -1,9 +1,8 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Data } from './model';
 import { Subject } from 'rxjs';
-import { PersonalService } from './personal/personal.service';
-import { ContactService } from './contact/contact.service';
-import { MessageService } from './message/message.service';
+
+
 
 
 @Injectable({
@@ -11,7 +10,7 @@ import { MessageService } from './message/message.service';
 })
 export class AppService implements OnInit{
 
-  constructor(private personalservice: PersonalService, private contactservice: ContactService, private messageservice: MessageService) { }
+  constructor() { }
 
   ngOnInit() {
    
@@ -42,6 +41,9 @@ export class AppService implements OnInit{
   personalIsActive = true;
   contactIsActive = false;
   messageIsActive = false;
+
+  personalDisable = false;
+  contactDisable = false;
 
 
   isGeorgian(event,element) {
@@ -138,12 +140,12 @@ export class AppService implements OnInit{
   
   retype(event?, password?) {
     
-    if(this.password.nativeElement.value != event.target.value) {
-      password.error = "პაროლები არ ემთქხვევა ერთმანეთს!"
-      password.isSuitable = true;
-    } else { 
-      password.isSuitable = false;
-    }
+    //if(this.password.nativeElement.value != event.target.value) {
+    //  password.error = "პაროლები არ ემთქხვევა ერთმანეთს!"
+    //  password.isSuitable = true;
+    //} else { 
+    //  password.isSuitable = false;
+    //}
   }
 
 
@@ -162,16 +164,5 @@ export class AppService implements OnInit{
 
   }
 
-  back() {
-    if(this.contactIsActive) {
-      this.personalIsActive = true;
-      this.contactIsActive = false;
-      return 0;
-    }
-    if(this.messageIsActive) {
-      this.messageIsActive = false;
-      this.contactIsActive = true;
-    }
-  }
-
+ 
 }

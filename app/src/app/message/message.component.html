@@ -1,16 +1,16 @@
-<form class="message" [formGroup]="form3">
+<form class="message" [formGroup]="form">
     <div style="position: relative; margin: 0 auto;">
 
        
     <div #animation style="position: absolute;background-color: blue; height: 100%; width: 0%;top: 0px; opacity: 0.5;">.</div>
-    <input id="visual-timer" type="number" onKeyPress="if(this.value.length==4) return false;" #textarea formControlName="text" class="messageinp" style="width: 100%; margin: 0 auto;" maxlength="4" [(ngModel)]="state.message.text">
+    <input id="visual-timer" type="number" onKeyPress="if(this.value.length==4) return false;" #textarea formControlName="text" class="messageinp" style="width: 100%; margin: 0 auto;" maxlength="4" [(ngModel)]="appservice.state.message.text">
     
   
   </div>
   <button *ngIf="timeless" class="next" (click)="Animation(); k=0;" style="border-style: none;">Resend Code</button>
   <div class="relative">
-    <input (blur)="blurFunction(password)" (focus)="focusFuncton(password)" formControlName="password" #password class="messageinp" type="password" placeholder="  password..." [(ngModel)]="state.message.password" (keyup)="passwordcheck($event, password)">
-    <input  class="messageinp" type="password" placeholder="  Retype password..." (value)="state[2][1]" (keyup)="retype($event,password)">
+    <input (blur)="appservice.blurFunction(password)" (focus)="appservice.focusFuncton(password)" formControlName="password" #password class="messageinp" type="password" placeholder="  password..." [(ngModel)]="appservice.state.message.password" (keyup)="appservice.passwordcheck($event, password)">
+    <input  class="messageinp" type="password" placeholder="  Retype password..." (value)="state[2][1]" (keyup)="appservice.retype($event,password)">
     <span style="color:red" *ngIf="password.isSuitable && password.onBlur">{{ password.error }}</span>
     </div>
             

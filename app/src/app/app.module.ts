@@ -11,6 +11,8 @@ import { ChildComponent } from './child/child.component';
 import { PersonalComponent } from './personal/personal.component';
 import { MessageComponent } from './message/message.component';
 import { ContactComponent } from './contact/contact.component';
+import { AppService } from './app.service';
+
 
 @NgModule({
   declarations: [
@@ -25,10 +27,10 @@ import { ContactComponent } from './contact/contact.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
