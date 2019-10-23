@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable, OnInit, ElementRef } from '@angular/core';
 import { Data } from './model';
 import { Subject } from 'rxjs';
 
@@ -141,12 +141,13 @@ export class AppService implements OnInit{
   
   retype(event?, password?) {
     
-    //if(this.password.nativeElement.value != event.target.value) {
-    //  password.error = "პაროლები არ ემთქხვევა ერთმანეთს!"
-    //  password.isSuitable = true;
-    //} else { 
-    //  password.isSuitable = false;
-    //}
+    
+    if(password.value != event.target.value) {
+      password.error = "პაროლები არ ემთქხვევა ერთმანეთს!"
+      password.isSuitable = true;
+    } else { 
+      password.isSuitable = false;
+    }
   }
 
 

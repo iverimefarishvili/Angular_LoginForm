@@ -33,7 +33,5 @@ export class MessageComponent implements OnInit {
     }
   }
 
-  next() {
-    
-  }
+  
 }
