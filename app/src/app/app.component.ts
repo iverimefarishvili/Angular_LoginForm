@@ -80,14 +80,12 @@ export class AppComponent {
   }
 
   register() {
-      if((this.personal.form.value.firstName.length>0 && this.personal.form.value.lastName.length >0 && this.personal.form.value.idNumber.length > 0 && this.contact.form.value.email.length>0 && this.contact.form.value.phonenumber.length > 0 && `${this.message.form.value.text}`.length>0 && this.message.form.value.password.length>0 )) {
-         
+      //if((this.personal.form.value.firstName.length>0 && this.personal.form.value.lastName.length >0 && this.personal.form.value.idNumber.length > 0 && this.contact.form.value.email.length>0 && this.contact.form.value.phonenumber.length > 0 && `${this.message.form.value.text}`.length>0 && this.message.form.value.password.length>0 )) {
         if(this.appservice.personalDisable && this.appservice.contactDisable)  {
           this.message.pushItem(); 
           this.appservice.loginpageIsactive = !this.appservice.loginpageIsactive;
-          
         }
-      }
+      //}
       
   }
 
