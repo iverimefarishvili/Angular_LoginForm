@@ -45,6 +45,7 @@ export class AppService implements OnInit{
   personalDisable = false;
   contactDisable = false;
 
+  animation = false;
 
   isGeorgian(event,element) {
     

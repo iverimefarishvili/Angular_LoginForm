@@ -106,3 +106,14 @@
         pointer-events:none;
         opacity: 0.8;
     }
+
+    .anim {
+        background: aqua;
+        animation: sample 60s 1s;
+        animation-fill-mode: none;
+    }
+
+    @keyframes sample {
+        0%{ background: aqua; width: 0%;}
+        100% {background: aqua; width: 100%;}
+    }
